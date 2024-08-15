@@ -374,9 +374,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Blocks: Attribute.DynamicZone<
-      ['shared.slider', 'shared.accordion', 'shared.banner']
-    > &
+    Blocks: Attribute.DynamicZone<['shared.banner', 'shared.hero-grid-video']> &
       Attribute.Required;
     Metatags: Attribute.Component<'shared.meta'>;
     Title: Attribute.String & Attribute.Required & Attribute.Unique;

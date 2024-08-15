@@ -15,9 +15,8 @@
     "Blocks": {
       "type": "dynamiczone",
       "components": [
-        "shared.slider",
-        "shared.accordion",
-        "shared.banner"
+        "shared.banner",
+        "shared.hero-grid-video"
       ],
       "required": true
     },

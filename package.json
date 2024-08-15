@@ -30,6 +30,7 @@
     "slugify": "^1.6.6",
     "strapi-plugin-elasticsearch": "^0.0.0",
     "strapi-plugin-menus": "^1.6.1",
+    "strapi-plugin-oembed": "^1.2.1",
     "strapi-plugin-populate-deep": "^3.0.1",
     "strapi-plugin-slugify": "^2.3.8",
     "strapi-plugin-vercel-deploy": "^1.4.0",

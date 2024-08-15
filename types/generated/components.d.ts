@@ -88,11 +88,33 @@ export interface SharedMetaSocial extends Schema.Component {
   };
 }
 
+export interface SharedHeroGridVideo extends Schema.Component {
+  collectionName: 'components_shared_hero_grid_videos';
+  info: {
+    displayName: 'HeroGridVideo';
+    icon: 'picture';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Video: Attribute.Text;
+  };
+}
+
 export interface SharedBanner extends Schema.Component {
   collectionName: 'components_shared_banners';
   info: {
     displayName: 'Banner';
     icon: 'picture';
+    description: '';
   };
   attributes: {
     Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
@@ -133,6 +155,7 @@ declare module '@strapi/types' {
       'shared.seo': SharedSeo;
       'shared.meta': SharedMeta;
       'shared.meta-social': SharedMetaSocial;
+      'shared.hero-grid-video': SharedHeroGridVideo;
       'shared.banner': SharedBanner;
       'shared.accordion': SharedAccordion;
     }

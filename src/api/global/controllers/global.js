@@ -39,9 +39,10 @@ module.exports = {
               entity.attributes.Blocks = entity.attributes.Blocks.map(
                 (block) => {
                   const componentName = block.__component.split(".")[1];
-                  const capitalizedComponentName =
-                    componentName.charAt(0).toUpperCase() +
-                    componentName.slice(1);
+                  const capitalizedComponentName = componentName
+                    .split("-")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join("");
 
                   return {
                     componentName: capitalizedComponentName, // Capitalize the first letter
