@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_slider_items",
+  "info": {
+    "displayName": "Slider Item",
+    "icon": "landscape"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

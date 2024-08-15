@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_metas",
+  "info": {
+    "displayName": "Meta",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
