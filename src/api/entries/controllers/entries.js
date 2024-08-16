@@ -1,42 +1,32 @@
 "use strict";
 
 module.exports = {
-  async find(ctx) {
-    const contentTypes = await strapi.contentTypes;
-
-    // Extract content type names
-    const contentTypeNames = Object.keys(contentTypes)
-      .filter((key) => key.startsWith("api::"))
-      .map((key) => key.split("::")[1].split(".")[1]);
-
-    const data = [];
+  async findEntriesByEntity(ctx) {
+    const { id } = ctx.params;
 
     // Get pagination parameters from the query string, with default values
     const { page = 1, limit = 100 } = ctx.query;
     const start = (page - 1) * limit;
 
-    for (const contentType of contentTypeNames) {
-      const entities = await strapi.entityService.findMany(
-        `api::${contentType}.${contentType}`,
-        {
-          start,
-          limit,
-        }
-      );
-      entities.forEach((entry) => {
-        data.push({
-          id: entry.slug || entry.id,
-          type: contentType,
-          attributes: {
-            name: entry.name || entry.title,
-            route_url: entry.route_url || `/${entry.slug || entry.id}`,
-            visibility: entry.visibility || "public",
-            published_at: entry.publishedAt,
-            locale: entry.locale || "en",
-          },
-        });
+    const entities = await strapi.entityService.findMany(`api::${id}.${id}`, {
+      start,
+      limit,
+    });
+    const data = [];
+
+    entities.forEach((entry) => {
+      data.push({
+        id: entry.slug || entry.id,
+        type: id,
+        attributes: {
+          name: entry.name || entry.title,
+          route_url: entry.route_url || `/${entry.slug || entry.id}`,
+          visibility: entry.visibility || "public",
+          published_at: entry.publishedAt,
+          locale: entry.locale || "en",
+        },
       });
-    }
+    });
 
     const totalItems = data.length;
     const totalPages = Math.ceil(totalItems / limit);

@@ -30,7 +30,11 @@ module.exports = {
           if (entities.length > 0) {
             const entity = {
               type: contentType,
-              attributes: entities[0], // Return the first matching entity
+              route_url: `/${entities[0].slug || entities[0].id}`,
+              attributes: {
+                route_url: `/${entities[0].slug || entities[0].id}`,
+                ...entities[0],
+              }, // Return the first matching entity
             };
             if (
               entity.attributes.Blocks &&
