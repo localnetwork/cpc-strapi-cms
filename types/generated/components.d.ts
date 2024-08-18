@@ -52,6 +52,42 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
+export interface SharedNews extends Schema.Component {
+  collectionName: 'components_shared_news';
+  info: {
+    displayName: 'News';
+    icon: 'envelop';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+  };
+}
+
+export interface SharedNewsBlock extends Schema.Component {
+  collectionName: 'components_shared_news_blocks';
+  info: {
+    displayName: 'NewsBlock';
+    icon: 'envelop';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+  };
+}
+
 export interface SharedMeta extends Schema.Component {
   collectionName: 'components_shared_metas';
   info: {
@@ -109,6 +145,76 @@ export interface SharedHeroGridVideo extends Schema.Component {
   };
 }
 
+export interface SharedHeroGridColumns extends Schema.Component {
+  collectionName: 'components_shared_hero_grid_columns';
+  info: {
+    displayName: 'HeroGridColumns';
+    icon: 'grid';
+    description: '';
+  };
+  attributes: {
+    Items: Attribute.Component<'shared.hero-grid-column-item', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 3;
+          max: 3;
+        },
+        number
+      >;
+  };
+}
+
+export interface SharedHeroGridColumnItem extends Schema.Component {
+  collectionName: 'components_shared_hero_grid_column_items';
+  info: {
+    displayName: 'HeroGridColumnItem';
+    icon: 'grid';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Color: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+  };
+}
+
+export interface SharedFacultyBlock extends Schema.Component {
+  collectionName: 'components_shared_faculty_blocks';
+  info: {
+    displayName: 'FacultyBlock';
+    icon: 'emotionHappy';
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface SharedCoursesBlock extends Schema.Component {
+  collectionName: 'components_shared_courses_blocks';
+  info: {
+    displayName: 'CoursesBlock';
+    icon: 'write';
+    description: '';
+  };
+  attributes: {
+    Courses: Attribute.Relation<
+      'shared.courses-block',
+      'oneToMany',
+      'api::course.course'
+    >;
+    Title: Attribute.String;
+  };
+}
+
 export interface SharedBanner extends Schema.Component {
   collectionName: 'components_shared_banners';
   info: {
@@ -153,9 +259,15 @@ declare module '@strapi/types' {
       'shared.slider': SharedSlider;
       'shared.slider-item': SharedSliderItem;
       'shared.seo': SharedSeo;
+      'shared.news': SharedNews;
+      'shared.news-block': SharedNewsBlock;
       'shared.meta': SharedMeta;
       'shared.meta-social': SharedMetaSocial;
       'shared.hero-grid-video': SharedHeroGridVideo;
+      'shared.hero-grid-columns': SharedHeroGridColumns;
+      'shared.hero-grid-column-item': SharedHeroGridColumnItem;
+      'shared.faculty-block': SharedFacultyBlock;
+      'shared.courses-block': SharedCoursesBlock;
       'shared.banner': SharedBanner;
       'shared.accordion': SharedAccordion;
     }

@@ -8,10 +8,18 @@ module.exports = {
     const { page = 1, limit = 100 } = ctx.query;
     const start = (page - 1) * limit;
 
+    // const entities = await strapi.entityService.findMany(`api::${id}.${id}`, {
+    //   start,
+    //   limit,
+    //   populate: "deep",
+    // });
+
     const entities = await strapi.entityService.findMany(`api::${id}.${id}`, {
       start,
       limit,
+      populate: "deep",
     });
+
     const data = [];
 
     entities.forEach((entry) => {
@@ -24,6 +32,7 @@ module.exports = {
           visibility: entry.visibility || "public",
           published_at: entry.publishedAt,
           locale: entry.locale || "en",
+          ...entry,
         },
       });
     });
@@ -43,12 +52,17 @@ module.exports = {
         last_page: totalPages,
       },
       links: {
-        first: `${domainUrl}/api/routes?page=1`,
-        last: `${domainUrl}/api/routes?page=${totalPages}`,
-        prev: page > 1 ? `${domainUrl}/api/routes?page=${page - 1}` : null,
+        first: `${domainUrl}/api/contents/entries/${id}?page=1`,
+        last: `${domainUrl}/api/contents/entries/${id}?page=${totalPages}`,
+        prev:
+          page > 1
+            ? `${domainUrl}/api/contents/entries/${id}?page=${page - 1}`
+            : null,
         next:
           page < totalPages
-            ? `${domainUrl}/api/routes?page=${parseInt(page) + 1}`
+            ? `${domainUrl}/api/contents/entries/${id}?page=${
+                parseInt(page) + 1
+              }`
             : null,
       },
       jsonapi: {

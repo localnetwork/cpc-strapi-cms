@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_faculty_blocks",
+  "info": {
+    "displayName": "FacultyBlock",
+    "icon": "emotionHappy"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

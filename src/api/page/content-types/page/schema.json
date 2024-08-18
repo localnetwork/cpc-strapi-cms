@@ -16,7 +16,11 @@
       "type": "dynamiczone",
       "components": [
         "shared.banner",
-        "shared.hero-grid-video"
+        "shared.hero-grid-video",
+        "shared.hero-grid-columns",
+        "shared.courses-block",
+        "shared.news-block",
+        "shared.faculty-block"
       ],
       "required": true
     },
@@ -31,9 +35,9 @@
       "unique": true
     },
     "slug": {
-      "type": "uid",
-      "targetField": "Title",
-      "required": true
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }

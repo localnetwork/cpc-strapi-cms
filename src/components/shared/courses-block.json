@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_courses_blocks",
+  "info": {
+    "displayName": "CoursesBlock",
+    "icon": "write",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course"
+    },
+    "Title": {
+      "type": "string"
+    }
+  }
+}

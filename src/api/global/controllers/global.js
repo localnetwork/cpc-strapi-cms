@@ -4,6 +4,7 @@ module.exports = {
   async findBySlug(ctx) {
     const { slug } = ctx.params;
 
+    console.log("slug", slug);
     try {
       // Fetch all content types from Strapi
       const contentTypes = await strapi.contentTypes;

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shared_news_blocks",
+  "info": {
+    "displayName": "NewsBlock",
+    "icon": "envelop"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}

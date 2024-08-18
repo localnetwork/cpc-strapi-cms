@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_hero_grid_columns",
+  "info": {
+    "displayName": "HeroGridColumns",
+    "icon": "grid",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.hero-grid-column-item",
+      "max": 3,
+      "min": 3,
+      "required": true
+    }
+  }
+}
