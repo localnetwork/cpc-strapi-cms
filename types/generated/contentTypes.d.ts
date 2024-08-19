@@ -1154,7 +1154,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'shared.hero-grid-columns',
         'shared.courses-block',
         'shared.news-block',
-        'shared.faculty-block'
+        'shared.faculty-block',
+        'shared.about-school'
       ]
     > &
       Attribute.Required;
@@ -1206,6 +1207,36 @@ export interface ApiProjectProject extends Schema.CollectionType {
   };
 }
 
+export interface ApiSiteInfoSiteInfo extends Schema.SingleType {
+  collectionName: 'site_infos';
+  info: {
+    singularName: 'site-info';
+    pluralName: 'site-infos';
+    displayName: 'Site Info';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Site_Name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::site-info.site-info',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::site-info.site-info',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1234,6 +1265,7 @@ declare module '@strapi/types' {
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::page.page': ApiPagePage;
       'api::project.project': ApiProjectProject;
+      'api::site-info.site-info': ApiSiteInfoSiteInfo;
     }
   }
 }

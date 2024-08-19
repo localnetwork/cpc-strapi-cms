@@ -20,7 +20,8 @@
         "shared.hero-grid-columns",
         "shared.courses-block",
         "shared.news-block",
-        "shared.faculty-block"
+        "shared.faculty-block",
+        "shared.about-school"
       ],
       "required": true
     },

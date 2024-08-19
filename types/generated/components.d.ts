@@ -52,6 +52,18 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
+export interface SharedPageBanner extends Schema.Component {
+  collectionName: 'components_shared_page_banners';
+  info: {
+    displayName: 'PageBanner';
+    icon: 'picture';
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
 export interface SharedNews extends Schema.Component {
   collectionName: 'components_shared_news';
   info: {
@@ -253,12 +265,34 @@ export interface SharedAccordion extends Schema.Component {
   };
 }
 
+export interface SharedAboutSchool extends Schema.Component {
+  collectionName: 'components_shared_about_schools';
+  info: {
+    displayName: 'AboutSchool';
+    icon: 'question';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Link: Attribute.String;
+    Logo: Attribute.Media<'images'> & Attribute.Required;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'shared.slider': SharedSlider;
       'shared.slider-item': SharedSliderItem;
       'shared.seo': SharedSeo;
+      'shared.page-banner': SharedPageBanner;
       'shared.news': SharedNews;
       'shared.news-block': SharedNewsBlock;
       'shared.meta': SharedMeta;
@@ -270,6 +304,7 @@ declare module '@strapi/types' {
       'shared.courses-block': SharedCoursesBlock;
       'shared.banner': SharedBanner;
       'shared.accordion': SharedAccordion;
+      'shared.about-school': SharedAboutSchool;
     }
   }
 }
