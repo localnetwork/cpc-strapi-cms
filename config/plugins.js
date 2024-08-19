@@ -12,4 +12,9 @@ module.exports = ({ env }) => ({
       roles: ["strapi-super-admin"],
     },
   },
+  menus: {
+    config: {
+      maxDepth: 3,
+    },
+  },
 });
