@@ -1,5 +1,30 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SharedSubjects extends Schema.Component {
+  collectionName: 'components_shared_subjects';
+  info: {
+    displayName: 'Subjects';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    Year: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface SharedSubjectItem extends Schema.Component {
+  collectionName: 'components_shared_subject_items';
+  info: {
+    displayName: 'SubjectItem';
+    icon: 'bulletList';
+  };
+  attributes: {
+    SubjectCode: Attribute.String;
+    DescriptionTitle: Attribute.Text;
+    Units: Attribute.Integer;
+  };
+}
+
 export interface SharedSlider extends Schema.Component {
   collectionName: 'components_shared_sliders';
   info: {
@@ -49,6 +74,19 @@ export interface SharedSeo extends Schema.Component {
     structuredData: Attribute.JSON;
     metaViewport: Attribute.String;
     canonicalURL: Attribute.String;
+  };
+}
+
+export interface SharedSem extends Schema.Component {
+  collectionName: 'components_shared_sems';
+  info: {
+    displayName: 'Sem';
+    icon: 'grid';
+    description: '';
+  };
+  attributes: {
+    Sem: Attribute.String;
+    Subjects: Attribute.Component<'shared.subject-item', true>;
   };
 }
 
@@ -199,6 +237,24 @@ export interface SharedHeroGridColumnItem extends Schema.Component {
   };
 }
 
+export interface SharedFaqItem extends Schema.Component {
+  collectionName: 'components_shared_faq_items';
+  info: {
+    displayName: 'FAQ Item';
+    icon: 'bulletList';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+  };
+}
+
 export interface SharedFacultyBlock extends Schema.Component {
   collectionName: 'components_shared_faculty_blocks';
   info: {
@@ -289,9 +345,12 @@ export interface SharedAboutSchool extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'shared.subjects': SharedSubjects;
+      'shared.subject-item': SharedSubjectItem;
       'shared.slider': SharedSlider;
       'shared.slider-item': SharedSliderItem;
       'shared.seo': SharedSeo;
+      'shared.sem': SharedSem;
       'shared.page-banner': SharedPageBanner;
       'shared.news': SharedNews;
       'shared.news-block': SharedNewsBlock;
@@ -300,6 +359,7 @@ declare module '@strapi/types' {
       'shared.hero-grid-video': SharedHeroGridVideo;
       'shared.hero-grid-columns': SharedHeroGridColumns;
       'shared.hero-grid-column-item': SharedHeroGridColumnItem;
+      'shared.faq-item': SharedFaqItem;
       'shared.faculty-block': SharedFacultyBlock;
       'shared.courses-block': SharedCoursesBlock;
       'shared.banner': SharedBanner;

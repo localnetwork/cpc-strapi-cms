@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_subject_items",
+  "info": {
+    "displayName": "SubjectItem",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "SubjectCode": {
+      "type": "string"
+    },
+    "DescriptionTitle": {
+      "type": "text"
+    },
+    "Units": {
+      "type": "integer"
+    }
+  }
+}

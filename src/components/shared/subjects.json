@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_subjects",
+  "info": {
+    "displayName": "Subjects",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Year": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

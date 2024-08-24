@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_sems",
+  "info": {
+    "displayName": "Sem",
+    "icon": "grid",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Sem": {
+      "type": "string"
+    },
+    "Subjects": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.subject-item"
+    }
+  }
+}

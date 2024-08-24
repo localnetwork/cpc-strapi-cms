@@ -1080,6 +1080,8 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       Attribute.Required &
       Attribute.Unique &
       Attribute.DefaultTo<'courses/'>;
+    FAQs: Attribute.Component<'shared.faq-item', true>;
+    Subjects: Attribute.Component<'shared.subjects', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
