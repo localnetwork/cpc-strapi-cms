@@ -10,6 +10,11 @@
     "Year": {
       "type": "string",
       "required": true
+    },
+    "Semester": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.sem"
     }
   }
 }

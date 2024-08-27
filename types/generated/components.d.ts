@@ -9,6 +9,7 @@ export interface SharedSubjects extends Schema.Component {
   };
   attributes: {
     Year: Attribute.String & Attribute.Required;
+    Semester: Attribute.Component<'shared.sem', true>;
   };
 }
 

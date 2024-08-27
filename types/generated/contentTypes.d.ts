@@ -688,93 +688,6 @@ export interface PluginMenusMenuItem extends Schema.CollectionType {
   };
 }
 
-export interface PluginElasticsearchTask extends Schema.CollectionType {
-  collectionName: 'task';
-  info: {
-    singularName: 'task';
-    pluralName: 'tasks';
-    displayName: 'Task';
-    description: 'Search indexing tasks';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    collection_name: Attribute.String & Attribute.Required;
-    item_id: Attribute.Integer;
-    indexing_status: Attribute.Enumeration<['to-be-done', 'done']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'to-be-done'>;
-    full_site_indexing: Attribute.Boolean;
-    indexing_type: Attribute.Enumeration<
-      ['add-to-index', 'remove-from-index']
-    > &
-      Attribute.Required &
-      Attribute.DefaultTo<'add-to-index'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::elasticsearch.task',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::elasticsearch.task',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface PluginElasticsearchIndexingLog extends Schema.CollectionType {
-  collectionName: 'indexing-log';
-  info: {
-    singularName: 'indexing-log';
-    pluralName: 'indexing-logs';
-    displayName: 'Indexing Logs';
-    description: 'Logged runs of the indexing cron job';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    status: Attribute.Enumeration<['pass', 'fail']> & Attribute.Required;
-    details: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::elasticsearch.indexing-log',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::elasticsearch.indexing-log',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: 'i18n_locale';
   info: {
@@ -1255,8 +1168,6 @@ declare module '@strapi/types' {
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::menus.menu': PluginMenusMenu;
       'plugin::menus.menu-item': PluginMenusMenuItem;
-      'plugin::elasticsearch.task': PluginElasticsearchTask;
-      'plugin::elasticsearch.indexing-log': PluginElasticsearchIndexingLog;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
