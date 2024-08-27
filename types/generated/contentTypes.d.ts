@@ -995,6 +995,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       Attribute.DefaultTo<'courses/'>;
     FAQs: Attribute.Component<'shared.faq-item', true>;
     Subjects: Attribute.Component<'shared.subjects', true>;
+    Gallery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -48,6 +48,16 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.subjects"
+    },
+    "Gallery": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
