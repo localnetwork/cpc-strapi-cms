@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_shared_page_banner_texts",
+  "info": {
+    "displayName": "BannerText",
+    "icon": "strikeThrough",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "ShowBreadcrumbs": {
+      "type": "boolean",
+      "default": false
+    },
+    "Description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "Color": {
+      "type": "enumeration",
+      "enum": [
+        "Off White",
+        "Jet Black",
+        "Black"
+      ]
+    }
+  }
+}

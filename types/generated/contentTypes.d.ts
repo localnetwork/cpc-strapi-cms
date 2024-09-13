@@ -1071,7 +1071,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'shared.courses-block',
         'shared.news-block',
         'shared.faculty-block',
-        'shared.about-school'
+        'shared.about-school',
+        'shared.page-banner-text'
       ]
     > &
       Attribute.Required;
@@ -1129,12 +1130,15 @@ export interface ApiSiteInfoSiteInfo extends Schema.SingleType {
     singularName: 'site-info';
     pluralName: 'site-infos';
     displayName: 'Site Info';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Site_Name: Attribute.String;
+    site_name: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

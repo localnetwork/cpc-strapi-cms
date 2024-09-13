@@ -103,6 +103,27 @@ export interface SharedPageBanner extends Schema.Component {
   };
 }
 
+export interface SharedPageBannerText extends Schema.Component {
+  collectionName: 'components_shared_page_banner_texts';
+  info: {
+    displayName: 'BannerText';
+    icon: 'strikeThrough';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+    ShowBreadcrumbs: Attribute.Boolean & Attribute.DefaultTo<false>;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Color: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']>;
+  };
+}
+
 export interface SharedNews extends Schema.Component {
   collectionName: 'components_shared_news';
   info: {
@@ -353,6 +374,7 @@ declare module '@strapi/types' {
       'shared.seo': SharedSeo;
       'shared.sem': SharedSem;
       'shared.page-banner': SharedPageBanner;
+      'shared.page-banner-text': SharedPageBannerText;
       'shared.news': SharedNews;
       'shared.news-block': SharedNewsBlock;
       'shared.meta': SharedMeta;

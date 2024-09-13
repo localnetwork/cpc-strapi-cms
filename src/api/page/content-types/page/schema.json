@@ -21,7 +21,8 @@
         "shared.courses-block",
         "shared.news-block",
         "shared.faculty-block",
-        "shared.about-school"
+        "shared.about-school",
+        "shared.page-banner-text"
       ],
       "required": true
     },
