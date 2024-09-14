@@ -120,7 +120,8 @@ export interface SharedPageBannerText extends Schema.Component {
           preset: 'toolbar';
         }
       >;
-    Color: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']>;
+    Color: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']> &
+      Attribute.Required;
   };
 }
 

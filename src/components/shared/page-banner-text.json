@@ -28,7 +28,8 @@
         "Off White",
         "Jet Black",
         "Black"
-      ]
+      ],
+      "required": true
     }
   }
 }

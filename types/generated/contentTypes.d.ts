@@ -950,6 +950,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
           preset: 'toolbar';
         }
       >;
+    Gallery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
