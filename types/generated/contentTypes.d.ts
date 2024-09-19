@@ -1073,7 +1073,9 @@ export interface ApiPagePage extends Schema.CollectionType {
         'shared.news-block',
         'shared.faculty-block',
         'shared.about-school',
-        'shared.page-banner-text'
+        'shared.page-banner-text',
+        'shared.page-blog-header',
+        'shared.page-news-listing'
       ]
     > &
       Attribute.Required;

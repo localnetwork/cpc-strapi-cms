@@ -91,6 +91,28 @@ export interface SharedSem extends Schema.Component {
   };
 }
 
+export interface SharedPageNewsListing extends Schema.Component {
+  collectionName: 'components_shared_page_news_listings';
+  info: {
+    displayName: 'PageNewsListing';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {};
+}
+
+export interface SharedPageBlogHeader extends Schema.Component {
+  collectionName: 'components_shared_page_blog_headers';
+  info: {
+    displayName: 'PageNewsHeader';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String;
+  };
+}
+
 export interface SharedPageBanner extends Schema.Component {
   collectionName: 'components_shared_page_banners';
   info: {
@@ -374,6 +396,8 @@ declare module '@strapi/types' {
       'shared.slider-item': SharedSliderItem;
       'shared.seo': SharedSeo;
       'shared.sem': SharedSem;
+      'shared.page-news-listing': SharedPageNewsListing;
+      'shared.page-blog-header': SharedPageBlogHeader;
       'shared.page-banner': SharedPageBanner;
       'shared.page-banner-text': SharedPageBannerText;
       'shared.news': SharedNews;

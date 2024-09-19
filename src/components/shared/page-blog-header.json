@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_page_blog_headers",
+  "info": {
+    "displayName": "PageNewsHeader",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    }
+  }
+}

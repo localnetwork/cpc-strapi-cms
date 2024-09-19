@@ -1,0 +1,10 @@
+{
+  "collectionName": "components_shared_page_news_listings",
+  "info": {
+    "displayName": "PageNewsListing",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {}
+}
