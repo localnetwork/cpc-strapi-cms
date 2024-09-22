@@ -24,7 +24,10 @@
         "shared.about-school",
         "shared.page-banner-text",
         "shared.page-blog-header",
-        "shared.page-news-listing"
+        "shared.page-news-listing",
+        "shared.image-with-stats",
+        "shared.media-text",
+        "shared.card-texts-block"
       ],
       "required": true
     },

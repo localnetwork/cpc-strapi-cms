@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_shared_image_with_stats",
+  "info": {
+    "displayName": "ImageWithStats",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.stat"
+    },
+    "Color": {
+      "type": "enumeration",
+      "enum": [
+        "Off White",
+        "Jet Black",
+        "Black"
+      ]
+    }
+  }
+}

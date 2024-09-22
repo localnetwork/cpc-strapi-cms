@@ -26,6 +26,18 @@ export interface SharedSubjectItem extends Schema.Component {
   };
 }
 
+export interface SharedStat extends Schema.Component {
+  collectionName: 'components_shared_stats';
+  info: {
+    displayName: 'Stat';
+    icon: 'layer';
+  };
+  attributes: {
+    Value: Attribute.String;
+    Label: Attribute.String;
+  };
+}
+
 export interface SharedSlider extends Schema.Component {
   collectionName: 'components_shared_sliders';
   info: {
@@ -47,6 +59,19 @@ export interface SharedSliderItem extends Schema.Component {
   attributes: {
     Title: Attribute.String;
     Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface SharedSiteInfoSocial extends Schema.Component {
+  collectionName: 'components_shared_site_info_socials';
+  info: {
+    displayName: 'SiteInfoSocial';
+    icon: 'bulletList';
+  };
+  attributes: {
+    Platform: Attribute.Enumeration<['Facebook', 'Instagram', 'Tiktok', 'X']> &
+      Attribute.Required;
+    Link: Attribute.String & Attribute.Required;
   };
 }
 
@@ -219,6 +244,45 @@ export interface SharedMetaSocial extends Schema.Component {
   };
 }
 
+export interface SharedMediaText extends Schema.Component {
+  collectionName: 'components_shared_media_texts';
+  info: {
+    displayName: 'MediaText';
+    icon: 'dashboard';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Media: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']> &
+      Attribute.Required;
+    MediaPos: Attribute.Enumeration<['Left', 'Right']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Left'>;
+  };
+}
+
+export interface SharedImageWithStats extends Schema.Component {
+  collectionName: 'components_shared_image_with_stats';
+  info: {
+    displayName: 'ImageWithStats';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Stats: Attribute.Component<'shared.stat', true>;
+    Color: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']>;
+  };
+}
+
 export interface SharedHeroGridVideo extends Schema.Component {
   collectionName: 'components_shared_hero_grid_videos';
   info: {
@@ -328,6 +392,37 @@ export interface SharedCoursesBlock extends Schema.Component {
   };
 }
 
+export interface SharedCardTextsBlock extends Schema.Component {
+  collectionName: 'components_shared_card_texts_blocks';
+  info: {
+    displayName: 'CardTextsBlock';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    Cards: Attribute.Component<'shared.card-text', true>;
+    Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']>;
+  };
+}
+
+export interface SharedCardText extends Schema.Component {
+  collectionName: 'components_shared_card_texts';
+  info: {
+    displayName: 'CardText';
+    icon: 'server';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+  };
+}
+
 export interface SharedBanner extends Schema.Component {
   collectionName: 'components_shared_banners';
   info: {
@@ -392,8 +487,10 @@ declare module '@strapi/types' {
     export interface Components {
       'shared.subjects': SharedSubjects;
       'shared.subject-item': SharedSubjectItem;
+      'shared.stat': SharedStat;
       'shared.slider': SharedSlider;
       'shared.slider-item': SharedSliderItem;
+      'shared.site-info-social': SharedSiteInfoSocial;
       'shared.seo': SharedSeo;
       'shared.sem': SharedSem;
       'shared.page-news-listing': SharedPageNewsListing;
@@ -404,12 +501,16 @@ declare module '@strapi/types' {
       'shared.news-block': SharedNewsBlock;
       'shared.meta': SharedMeta;
       'shared.meta-social': SharedMetaSocial;
+      'shared.media-text': SharedMediaText;
+      'shared.image-with-stats': SharedImageWithStats;
       'shared.hero-grid-video': SharedHeroGridVideo;
       'shared.hero-grid-columns': SharedHeroGridColumns;
       'shared.hero-grid-column-item': SharedHeroGridColumnItem;
       'shared.faq-item': SharedFaqItem;
       'shared.faculty-block': SharedFacultyBlock;
       'shared.courses-block': SharedCoursesBlock;
+      'shared.card-texts-block': SharedCardTextsBlock;
+      'shared.card-text': SharedCardText;
       'shared.banner': SharedBanner;
       'shared.accordion': SharedAccordion;
       'shared.about-school': SharedAboutSchool;

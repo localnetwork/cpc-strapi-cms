@@ -28,6 +28,20 @@
         "videos",
         "audios"
       ]
+    },
+    "social_links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.site-info-social"
+    },
+    "Address": {
+      "type": "text"
+    },
+    "Phone": {
+      "type": "text"
+    },
+    "Email": {
+      "type": "email"
     }
   }
 }
