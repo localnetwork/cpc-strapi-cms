@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_shared_timelines",
+  "info": {
+    "displayName": "Timeline",
+    "icon": "filter",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Timelines": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.timeline-item"
+    },
+    "Theme": {
+      "type": "enumeration",
+      "enum": [
+        "Off White",
+        "Jet Black",
+        "Black"
+      ]
+    },
+    "Title": {
+      "type": "string"
+    }
+  }
+}

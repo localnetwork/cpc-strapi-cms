@@ -1,5 +1,39 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SharedTimeline extends Schema.Component {
+  collectionName: 'components_shared_timelines';
+  info: {
+    displayName: 'Timeline';
+    icon: 'filter';
+    description: '';
+  };
+  attributes: {
+    Timelines: Attribute.Component<'shared.timeline-item', true>;
+    Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']>;
+    Title: Attribute.String;
+  };
+}
+
+export interface SharedTimelineItem extends Schema.Component {
+  collectionName: 'components_shared_timeline_items';
+  info: {
+    displayName: 'Timeline Item';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Gallery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+  };
+}
+
 export interface SharedSubjects extends Schema.Component {
   collectionName: 'components_shared_subjects';
   info: {
@@ -410,6 +444,7 @@ export interface SharedCardText extends Schema.Component {
   info: {
     displayName: 'CardText';
     icon: 'server';
+    description: '';
   };
   attributes: {
     Title: Attribute.String;
@@ -420,6 +455,7 @@ export interface SharedCardText extends Schema.Component {
           preset: 'toolbar';
         }
       >;
+    Link: Attribute.String;
   };
 }
 
@@ -485,6 +521,8 @@ export interface SharedAboutSchool extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'shared.timeline': SharedTimeline;
+      'shared.timeline-item': SharedTimelineItem;
       'shared.subjects': SharedSubjects;
       'shared.subject-item': SharedSubjectItem;
       'shared.stat': SharedStat;

@@ -951,6 +951,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         }
       >;
     Gallery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    Metatags: Attribute.Component<'shared.meta'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1078,7 +1079,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'shared.page-news-listing',
         'shared.image-with-stats',
         'shared.media-text',
-        'shared.card-texts-block'
+        'shared.card-texts-block',
+        'shared.timeline'
       ]
     > &
       Attribute.Required;

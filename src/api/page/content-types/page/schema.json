@@ -27,7 +27,8 @@
         "shared.page-news-listing",
         "shared.image-with-stats",
         "shared.media-text",
-        "shared.card-texts-block"
+        "shared.card-texts-block",
+        "shared.timeline"
       ],
       "required": true
     },

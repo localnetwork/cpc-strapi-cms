@@ -2,7 +2,8 @@
   "collectionName": "components_shared_card_texts",
   "info": {
     "displayName": "CardText",
-    "icon": "server"
+    "icon": "server",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -15,6 +16,9 @@
         "preset": "toolbar"
       },
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "Link": {
+      "type": "string"
     }
   }
 }
