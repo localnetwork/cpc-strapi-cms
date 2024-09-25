@@ -28,7 +28,8 @@
         "shared.image-with-stats",
         "shared.media-text",
         "shared.card-texts-block",
-        "shared.timeline"
+        "shared.timeline",
+        "shared.text"
       ],
       "required": true
     },

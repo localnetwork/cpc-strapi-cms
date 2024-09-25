@@ -1053,6 +1053,50 @@ export interface ApiFacultyFaculty extends Schema.CollectionType {
   };
 }
 
+export interface ApiInstructorInstructor extends Schema.CollectionType {
+  collectionName: 'instructors';
+  info: {
+    singularName: 'instructor';
+    pluralName: 'instructors';
+    displayName: 'Instructor';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Bio: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Title: Attribute.String;
+    subjects: Attribute.Relation<
+      'api::instructor.instructor',
+      'oneToMany',
+      'api::subject.subject'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::instructor.instructor',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::instructor.instructor',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Schema.CollectionType {
   collectionName: 'pages';
   info: {
@@ -1080,7 +1124,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'shared.image-with-stats',
         'shared.media-text',
         'shared.card-texts-block',
-        'shared.timeline'
+        'shared.timeline',
+        'shared.text'
       ]
     > &
       Attribute.Required;
@@ -1169,6 +1214,41 @@ export interface ApiSiteInfoSiteInfo extends Schema.SingleType {
   };
 }
 
+export interface ApiSubjectSubject extends Schema.CollectionType {
+  collectionName: 'subjects';
+  info: {
+    singularName: 'subject';
+    pluralName: 'subjects';
+    displayName: 'Subject';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    instructor: Attribute.Relation<
+      'api::subject.subject',
+      'manyToOne',
+      'api::instructor.instructor'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subject.subject',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subject.subject',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1193,9 +1273,11 @@ declare module '@strapi/types' {
       'api::article.article': ApiArticleArticle;
       'api::course.course': ApiCourseCourse;
       'api::faculty.faculty': ApiFacultyFaculty;
+      'api::instructor.instructor': ApiInstructorInstructor;
       'api::page.page': ApiPagePage;
       'api::project.project': ApiProjectProject;
       'api::site-info.site-info': ApiSiteInfoSiteInfo;
+      'api::subject.subject': ApiSubjectSubject;
     }
   }
 }

@@ -34,6 +34,25 @@ export interface SharedTimelineItem extends Schema.Component {
   };
 }
 
+export interface SharedText extends Schema.Component {
+  collectionName: 'components_shared_texts';
+  info: {
+    displayName: 'Text';
+    icon: 'underline';
+    description: '';
+  };
+  attributes: {
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']>;
+  };
+}
+
 export interface SharedSubjects extends Schema.Component {
   collectionName: 'components_shared_subjects';
   info: {
@@ -523,6 +542,7 @@ declare module '@strapi/types' {
     export interface Components {
       'shared.timeline': SharedTimeline;
       'shared.timeline-item': SharedTimelineItem;
+      'shared.text': SharedText;
       'shared.subjects': SharedSubjects;
       'shared.subject-item': SharedSubjectItem;
       'shared.stat': SharedStat;
