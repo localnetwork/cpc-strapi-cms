@@ -51,6 +51,16 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.meta"
+    },
+    "Category": {
+      "type": "enumeration",
+      "enum": [
+        "GAD",
+        "Publication",
+        "SAO",
+        "Registrar"
+      ],
+      "required": true
     }
   }
 }

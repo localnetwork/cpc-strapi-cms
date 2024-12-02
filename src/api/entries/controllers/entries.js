@@ -4,18 +4,34 @@ module.exports = {
   async findEntriesByEntity(ctx) {
     const { id } = ctx.params;
 
-    // Get pagination and sorting parameters from the query string, with default values
-    const { page = 1, limit = 100, sort = "createdAt:desc" } = ctx.query;
+    // Get pagination, sorting, and filtering parameters from the query string
+    const {
+      page = 1,
+      limit = 100,
+      sort = "createdAt:desc",
+      filters = "{}",
+    } = ctx.query;
     const start = (page - 1) * limit;
 
     // Extract the sorting field and order from the query
     const [sortField, sortOrder] = sort.split(":");
 
-    // Fetch entities with pagination, dynamic sorting, and deep population
+    // Parse filters from JSON string into an object
+    let filterObject;
+    try {
+      filterObject = JSON.parse(filters);
+    } catch (error) {
+      return ctx.badRequest(
+        "Invalid filter format. Filters should be a valid JSON object."
+      );
+    }
+    console.log("sortOrder", sortOrder);
+    // Fetch entities with pagination, dynamic sorting, filtering, and deep population
     const entities = await strapi.entityService.findMany(`api::${id}.${id}`, {
       start,
       limit,
       sort: { [sortField]: sortOrder || "desc" }, // Apply the dynamic sort field and order
+      filters: filterObject, // Apply dynamic filters
       populate: "deep",
     });
 

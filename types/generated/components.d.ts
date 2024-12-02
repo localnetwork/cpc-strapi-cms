@@ -322,6 +322,46 @@ export interface SharedMediaText extends Schema.Component {
   };
 }
 
+export interface SharedInterstitial extends Schema.Component {
+  collectionName: 'components_shared_interstitials';
+  info: {
+    displayName: 'Interstitial';
+    icon: 'landscape';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+  };
+}
+
+export interface SharedInterstitialContent extends Schema.Component {
+  collectionName: 'components_shared_interstitial_contents';
+  info: {
+    displayName: 'Interstitial Content';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']> &
+      Attribute.DefaultTo<'Jet Black'>;
+  };
+}
+
 export interface SharedImageWithStats extends Schema.Component {
   collectionName: 'components_shared_image_with_stats';
   info: {
@@ -498,6 +538,26 @@ export interface SharedBanner extends Schema.Component {
   };
 }
 
+export interface SharedBannerGrid extends Schema.Component {
+  collectionName: 'components_shared_banner_grids';
+  info: {
+    displayName: 'Banner Grid';
+    icon: 'crop';
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+  };
+}
+
 export interface SharedAccordion extends Schema.Component {
   collectionName: 'components_shared_accordions';
   info: {
@@ -560,6 +620,8 @@ declare module '@strapi/types' {
       'shared.meta': SharedMeta;
       'shared.meta-social': SharedMetaSocial;
       'shared.media-text': SharedMediaText;
+      'shared.interstitial': SharedInterstitial;
+      'shared.interstitial-content': SharedInterstitialContent;
       'shared.image-with-stats': SharedImageWithStats;
       'shared.hero-grid-video': SharedHeroGridVideo;
       'shared.hero-grid-columns': SharedHeroGridColumns;
@@ -570,6 +632,7 @@ declare module '@strapi/types' {
       'shared.card-texts-block': SharedCardTextsBlock;
       'shared.card-text': SharedCardText;
       'shared.banner': SharedBanner;
+      'shared.banner-grid': SharedBannerGrid;
       'shared.accordion': SharedAccordion;
       'shared.about-school': SharedAboutSchool;
     }

@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_shared_interstitial_contents",
+  "info": {
+    "displayName": "Interstitial Content",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "Theme": {
+      "type": "enumeration",
+      "enum": [
+        "Off White",
+        "Jet Black",
+        "Black"
+      ],
+      "default": "Jet Black"
+    }
+  }
+}

@@ -952,6 +952,10 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       >;
     Gallery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     Metatags: Attribute.Component<'shared.meta'>;
+    Category: Attribute.Enumeration<
+      ['GAD', 'Publication', 'SAO', 'Registrar']
+    > &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1125,7 +1129,9 @@ export interface ApiPagePage extends Schema.CollectionType {
         'shared.media-text',
         'shared.card-texts-block',
         'shared.timeline',
-        'shared.text'
+        'shared.text',
+        'shared.interstitial-content',
+        'shared.accordion'
       ]
     > &
       Attribute.Required;

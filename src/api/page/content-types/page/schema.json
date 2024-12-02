@@ -29,7 +29,9 @@
         "shared.media-text",
         "shared.card-texts-block",
         "shared.timeline",
-        "shared.text"
+        "shared.text",
+        "shared.interstitial-content",
+        "shared.accordion"
       ],
       "required": true
     },
