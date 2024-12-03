@@ -6,7 +6,7 @@ const HelloWorldButton = ({ slug }) => {
     if (!slug) {
       alert("No preview available for this entry.");
     } else {
-      const previewUrl = `https://cordova-public-college.verce.app/preview?route=/${slug}`;
+      const previewUrl = `https://cordova-public-college.vercel.app/preview?route=/${slug}`;
       // const previewUrl = `http://localhost:3000/preview?route=/${slug}`;
       window.open(previewUrl, "_blank");
     }
