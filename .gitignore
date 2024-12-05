@@ -116,3 +116,6 @@ build
 *.tmp
 .tmp
 /.tmp
+# Temporary files and caches
+.tmp
+.tmp/data.db
