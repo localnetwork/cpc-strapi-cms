@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^2.1.2",
+    "@strapi/data-transfer": "^4.25.10",
     "@strapi/plugin-cloud": "4.25.6",
     "@strapi/plugin-color-picker": "^4.25.8",
     "@strapi/plugin-i18n": "4.25.6",
