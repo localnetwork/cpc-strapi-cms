@@ -1025,75 +1025,46 @@ export interface ApiFacultyFaculty extends Schema.CollectionType {
   info: {
     singularName: 'faculty';
     pluralName: 'faculties';
-    displayName: 'Faculty';
+    displayName: 'People';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String & Attribute.Required;
     slug: Attribute.String &
       Attribute.Required &
       Attribute.Unique &
-      Attribute.DefaultTo<'faculty/'>;
+      Attribute.DefaultTo<'people/'>;
     Position: Attribute.String & Attribute.Required;
     Image: Attribute.Media<'images'> & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::faculty.faculty',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::faculty.faculty',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiInstructorInstructor extends Schema.CollectionType {
-  collectionName: 'instructors';
-  info: {
-    singularName: 'instructor';
-    pluralName: 'instructors';
-    displayName: 'Instructor';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Bio: Attribute.RichText &
+    Summary: Attribute.RichText &
+      Attribute.Required &
       Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
         {
           preset: 'toolbar';
         }
       >;
-    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
     Title: Attribute.String;
-    subjects: Attribute.Relation<
-      'api::instructor.instructor',
-      'oneToMany',
-      'api::subject.subject'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::instructor.instructor',
+      'api::faculty.faculty',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::instructor.instructor',
+      'api::faculty.faculty',
       'oneToOne',
       'admin::user'
     > &
@@ -1232,11 +1203,6 @@ export interface ApiSubjectSubject extends Schema.CollectionType {
   };
   attributes: {
     Title: Attribute.String;
-    instructor: Attribute.Relation<
-      'api::subject.subject',
-      'manyToOne',
-      'api::instructor.instructor'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1279,7 +1245,6 @@ declare module '@strapi/types' {
       'api::article.article': ApiArticleArticle;
       'api::course.course': ApiCourseCourse;
       'api::faculty.faculty': ApiFacultyFaculty;
-      'api::instructor.instructor': ApiInstructorInstructor;
       'api::page.page': ApiPagePage;
       'api::project.project': ApiProjectProject;
       'api::site-info.site-info': ApiSiteInfoSiteInfo;

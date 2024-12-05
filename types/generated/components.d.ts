@@ -460,11 +460,17 @@ export interface SharedFaqItem extends Schema.Component {
 export interface SharedFacultyBlock extends Schema.Component {
   collectionName: 'components_shared_faculty_blocks';
   info: {
-    displayName: 'FacultyBlock';
+    displayName: 'PeopleBlock';
     icon: 'emotionHappy';
+    description: '';
   };
   attributes: {
     Title: Attribute.String & Attribute.Required;
+    FeaturedPeople: Attribute.Relation<
+      'shared.faculty-block',
+      'oneToMany',
+      'api::faculty.faculty'
+    >;
   };
 }
 

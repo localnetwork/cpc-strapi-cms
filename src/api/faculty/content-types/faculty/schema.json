@@ -4,7 +4,7 @@
   "info": {
     "singularName": "faculty",
     "pluralName": "faculties",
-    "displayName": "Faculty",
+    "displayName": "People",
     "description": ""
   },
   "options": {
@@ -12,15 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
-      "type": "string",
-      "required": true
-    },
     "slug": {
       "type": "string",
       "unique": true,
-      "default": "faculty/",
-      "required": true
+      "default": "people/",
+      "required": true,
+      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:\\/[a-z0-9]+(?:-[a-z0-9]+)*)*$"
     },
     "Position": {
       "type": "string",
@@ -33,6 +30,24 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "Summary": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor",
+      "required": true
+    },
+    "Description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "Title": {
+      "type": "string"
     }
   }
 }

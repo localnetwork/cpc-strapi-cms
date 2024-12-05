@@ -117,4 +117,6 @@ build
 .tmp
 /.tmp
 # Temporary files and caches
-.tmp/
+.tmp
+.tmp/data.db
+.tmp.old

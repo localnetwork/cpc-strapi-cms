@@ -13,12 +13,6 @@
   "attributes": {
     "Title": {
       "type": "string"
-    },
-    "instructor": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::instructor.instructor",
-      "inversedBy": "subjects"
     }
   }
 }

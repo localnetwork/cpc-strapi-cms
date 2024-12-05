@@ -11,6 +11,22 @@ module.exports = ({ env }) => ({
       teamFilter: process.env.VERCEL_DEPLOY_PLUGIN_TEAM_FILTER,
     },
   },
+  "cloudflare-pages": {
+    enabled: true,
+    config: {
+      instances: [
+        {
+          name: "production",
+          hook_url:
+            "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/49625115-c3cc-489f-a3ca-a85cf36c0fdf",
+        },
+        // {
+        //   name: "preview website",
+        //   hook_url: "https://...",
+        // },
+      ],
+    },
+  },
   menus: {
     enabled: true,
     config: {

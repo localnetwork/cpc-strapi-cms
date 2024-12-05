@@ -1,14 +1,20 @@
 {
   "collectionName": "components_shared_faculty_blocks",
   "info": {
-    "displayName": "FacultyBlock",
-    "icon": "emotionHappy"
+    "displayName": "PeopleBlock",
+    "icon": "emotionHappy",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "Title": {
       "type": "string",
       "required": true
+    },
+    "FeaturedPeople": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faculty.faculty"
     }
   }
 }
