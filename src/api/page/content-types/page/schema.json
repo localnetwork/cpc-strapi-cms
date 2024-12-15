@@ -31,7 +31,11 @@
         "shared.timeline",
         "shared.text",
         "shared.interstitial-content",
-        "shared.accordion"
+        "shared.accordion",
+        "shared.landscape-media-text",
+        "shared.key-people",
+        "shared.our-people",
+        "shared.media"
       ],
       "required": true
     },

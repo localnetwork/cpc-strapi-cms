@@ -21,6 +21,18 @@
         "Jet Black",
         "Black"
       ]
+    },
+    "Alignment": {
+      "type": "enumeration",
+      "enum": [
+        "Left",
+        "Center",
+        "Right"
+      ],
+      "default": "Left"
+    },
+    "Title": {
+      "type": "string"
     }
   }
 }

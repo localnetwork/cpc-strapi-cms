@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_shared_our_people",
+  "info": {
+    "displayName": "OurPeople",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Theme": {
+      "type": "enumeration",
+      "enum": [
+        "Off White",
+        "Jet Black",
+        "Black"
+      ],
+      "default": "Jet Black",
+      "required": true
+    },
+    "Groups": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.people-group",
+      "required": true
+    }
+  }
+}

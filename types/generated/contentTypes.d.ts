@@ -1038,14 +1038,6 @@ export interface ApiFacultyFaculty extends Schema.CollectionType {
       Attribute.DefaultTo<'people/'>;
     Position: Attribute.String & Attribute.Required;
     Image: Attribute.Media<'images'> & Attribute.Required;
-    Summary: Attribute.RichText &
-      Attribute.Required &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      >;
     Description: Attribute.RichText &
       Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
@@ -1054,6 +1046,7 @@ export interface ApiFacultyFaculty extends Schema.CollectionType {
         }
       >;
     Title: Attribute.String;
+    rank: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1102,7 +1095,11 @@ export interface ApiPagePage extends Schema.CollectionType {
         'shared.timeline',
         'shared.text',
         'shared.interstitial-content',
-        'shared.accordion'
+        'shared.accordion',
+        'shared.landscape-media-text',
+        'shared.key-people',
+        'shared.our-people',
+        'shared.media'
       ]
     > &
       Attribute.Required;

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_people_groups",
+  "info": {
+    "displayName": "PeopleGroup",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faculty.faculty"
+    }
+  }
+}

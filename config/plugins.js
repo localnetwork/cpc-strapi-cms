@@ -27,6 +27,9 @@ module.exports = ({ env }) => ({
       ],
     },
   },
+  "drag-drop-content-types": {
+    enabled: true,
+  },
   menus: {
     enabled: true,
     config: {

@@ -50,6 +50,9 @@ export interface SharedText extends Schema.Component {
         }
       >;
     Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']>;
+    Alignment: Attribute.Enumeration<['Left', 'Center', 'Right']> &
+      Attribute.DefaultTo<'Left'>;
+    Title: Attribute.String;
   };
 }
 
@@ -169,6 +172,22 @@ export interface SharedSem extends Schema.Component {
   };
 }
 
+export interface SharedPeopleGroup extends Schema.Component {
+  collectionName: 'components_shared_people_groups';
+  info: {
+    displayName: 'PeopleGroup';
+    icon: 'bulletList';
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+    Items: Attribute.Relation<
+      'shared.people-group',
+      'oneToMany',
+      'api::faculty.faculty'
+    >;
+  };
+}
+
 export interface SharedPageNewsListing extends Schema.Component {
   collectionName: 'components_shared_page_news_listings';
   info: {
@@ -221,6 +240,22 @@ export interface SharedPageBannerText extends Schema.Component {
         }
       >;
     Color: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']> &
+      Attribute.Required;
+  };
+}
+
+export interface SharedOurPeople extends Schema.Component {
+  collectionName: 'components_shared_our_people';
+  info: {
+    displayName: 'OurPeople';
+    icon: 'user';
+    description: '';
+  };
+  attributes: {
+    Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Jet Black'>;
+    Groups: Attribute.Component<'shared.people-group', true> &
       Attribute.Required;
   };
 }
@@ -297,6 +332,18 @@ export interface SharedMetaSocial extends Schema.Component {
   };
 }
 
+export interface SharedMedia extends Schema.Component {
+  collectionName: 'components_shared_media';
+  info: {
+    displayName: 'Media';
+    icon: 'crop';
+  };
+  attributes: {
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+  };
+}
+
 export interface SharedMediaText extends Schema.Component {
   collectionName: 'components_shared_media_texts';
   info: {
@@ -319,6 +366,49 @@ export interface SharedMediaText extends Schema.Component {
     MediaPos: Attribute.Enumeration<['Left', 'Right']> &
       Attribute.Required &
       Attribute.DefaultTo<'Left'>;
+  };
+}
+
+export interface SharedLandscapeMediaText extends Schema.Component {
+  collectionName: 'components_shared_landscape_media_texts';
+  info: {
+    displayName: 'Message';
+    icon: 'expand';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+    Description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Color: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']> &
+      Attribute.DefaultTo<'Off White'>;
+    Subtitle: Attribute.String;
+  };
+}
+
+export interface SharedKeyPeople extends Schema.Component {
+  collectionName: 'components_shared_key_people';
+  info: {
+    displayName: 'KeyPeople';
+    description: '';
+  };
+  attributes: {
+    Items: Attribute.Relation<
+      'shared.key-people',
+      'oneToMany',
+      'api::faculty.faculty'
+    >;
+    Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Jet Black'>;
   };
 }
 
@@ -617,15 +707,20 @@ declare module '@strapi/types' {
       'shared.site-info-social': SharedSiteInfoSocial;
       'shared.seo': SharedSeo;
       'shared.sem': SharedSem;
+      'shared.people-group': SharedPeopleGroup;
       'shared.page-news-listing': SharedPageNewsListing;
       'shared.page-blog-header': SharedPageBlogHeader;
       'shared.page-banner': SharedPageBanner;
       'shared.page-banner-text': SharedPageBannerText;
+      'shared.our-people': SharedOurPeople;
       'shared.news': SharedNews;
       'shared.news-block': SharedNewsBlock;
       'shared.meta': SharedMeta;
       'shared.meta-social': SharedMetaSocial;
+      'shared.media': SharedMedia;
       'shared.media-text': SharedMediaText;
+      'shared.landscape-media-text': SharedLandscapeMediaText;
+      'shared.key-people': SharedKeyPeople;
       'shared.interstitial': SharedInterstitial;
       'shared.interstitial-content': SharedInterstitialContent;
       'shared.image-with-stats': SharedImageWithStats;

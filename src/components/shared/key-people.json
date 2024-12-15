@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_key_people",
+  "info": {
+    "displayName": "KeyPeople",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faculty.faculty"
+    },
+    "Theme": {
+      "type": "enumeration",
+      "enum": [
+        "Off White",
+        "Jet Black",
+        "Black"
+      ],
+      "default": "Jet Black",
+      "required": true
+    }
+  }
+}
