@@ -2,7 +2,8 @@
   "collectionName": "components_shared_people_groups",
   "info": {
     "displayName": "PeopleGroup",
-    "icon": "bulletList"
+    "icon": "bulletList",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,7 +11,7 @@
       "type": "string",
       "required": true
     },
-    "Items": {
+    "People": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::faculty.faculty"

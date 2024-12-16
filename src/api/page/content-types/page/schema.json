@@ -35,7 +35,10 @@
         "shared.landscape-media-text",
         "shared.key-people",
         "shared.our-people",
-        "shared.media"
+        "shared.media",
+        "shared.cards-with-accordion",
+        "shared.banner-media-text",
+        "shared.portrait-media-text"
       ],
       "required": true
     },

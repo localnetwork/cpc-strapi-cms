@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_shared_cards_with_accordions",
+  "info": {
+    "displayName": "CardsWithAccordion",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Theme": {
+      "type": "enumeration",
+      "enum": ["Off White", "Jet Black", "Black"],
+      "required": true
+    },
+    "Description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "Groups": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.cwa-items"
+    }
+  }
+}

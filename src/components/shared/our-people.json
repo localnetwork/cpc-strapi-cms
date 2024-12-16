@@ -9,11 +9,7 @@
   "attributes": {
     "Theme": {
       "type": "enumeration",
-      "enum": [
-        "Off White",
-        "Jet Black",
-        "Black"
-      ],
+      "enum": ["Off White", "Jet Black", "Black"],
       "default": "Jet Black",
       "required": true
     },

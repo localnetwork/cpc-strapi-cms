@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_shared_portrait_media_texts",
+  "info": {
+    "displayName": "PortraitMediaText",
+    "icon": "grid",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "Theme": {
+      "type": "enumeration",
+      "enum": [
+        "Off White",
+        "Jet Black",
+        "Black"
+      ]
+    }
+  }
+}

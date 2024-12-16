@@ -24,11 +24,7 @@
     },
     "Color": {
       "type": "enumeration",
-      "enum": [
-        "Off White",
-        "Jet Black",
-        "Black"
-      ],
+      "enum": ["Off White", "Jet Black", "Black"],
       "required": true
     }
   }

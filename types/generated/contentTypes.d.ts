@@ -1002,6 +1002,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     FAQs: Attribute.Component<'shared.faq-item', true>;
     Subjects: Attribute.Component<'shared.subjects', true>;
     Gallery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    Logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1099,7 +1100,10 @@ export interface ApiPagePage extends Schema.CollectionType {
         'shared.landscape-media-text',
         'shared.key-people',
         'shared.our-people',
-        'shared.media'
+        'shared.media',
+        'shared.cards-with-accordion',
+        'shared.banner-media-text',
+        'shared.portrait-media-text'
       ]
     > &
       Attribute.Required;

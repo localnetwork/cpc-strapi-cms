@@ -172,15 +172,38 @@ export interface SharedSem extends Schema.Component {
   };
 }
 
+export interface SharedPortraitMediaText extends Schema.Component {
+  collectionName: 'components_shared_portrait_media_texts';
+  info: {
+    displayName: 'PortraitMediaText';
+    icon: 'grid';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']>;
+  };
+}
+
 export interface SharedPeopleGroup extends Schema.Component {
   collectionName: 'components_shared_people_groups';
   info: {
     displayName: 'PeopleGroup';
     icon: 'bulletList';
+    description: '';
   };
   attributes: {
     Title: Attribute.String & Attribute.Required;
-    Items: Attribute.Relation<
+    People: Attribute.Relation<
       'shared.people-group',
       'oneToMany',
       'api::faculty.faculty'
@@ -564,6 +587,18 @@ export interface SharedFacultyBlock extends Schema.Component {
   };
 }
 
+export interface SharedCwaItems extends Schema.Component {
+  collectionName: 'components_shared_cwa_items';
+  info: {
+    displayName: 'CWAItems';
+    icon: 'bulletList';
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+    Items: Attribute.Component<'shared.accordion', true>;
+  };
+}
+
 export interface SharedCoursesBlock extends Schema.Component {
   collectionName: 'components_shared_courses_blocks';
   info: {
@@ -578,6 +613,28 @@ export interface SharedCoursesBlock extends Schema.Component {
       'api::course.course'
     >;
     Title: Attribute.String;
+  };
+}
+
+export interface SharedCardsWithAccordion extends Schema.Component {
+  collectionName: 'components_shared_cards_with_accordions';
+  info: {
+    displayName: 'CardsWithAccordion';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']> &
+      Attribute.Required;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Groups: Attribute.Component<'shared.cwa-items', true>;
   };
 }
 
@@ -631,6 +688,28 @@ export interface SharedBanner extends Schema.Component {
           preset: 'toolbar';
         }
       >;
+  };
+}
+
+export interface SharedBannerMediaText extends Schema.Component {
+  collectionName: 'components_shared_banner_media_texts';
+  info: {
+    displayName: 'BannerMediaText';
+    icon: 'expand';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    ShowBreadcrumbs: Attribute.Boolean & Attribute.Required;
+    Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']>;
   };
 }
 
@@ -707,6 +786,7 @@ declare module '@strapi/types' {
       'shared.site-info-social': SharedSiteInfoSocial;
       'shared.seo': SharedSeo;
       'shared.sem': SharedSem;
+      'shared.portrait-media-text': SharedPortraitMediaText;
       'shared.people-group': SharedPeopleGroup;
       'shared.page-news-listing': SharedPageNewsListing;
       'shared.page-blog-header': SharedPageBlogHeader;
@@ -729,10 +809,13 @@ declare module '@strapi/types' {
       'shared.hero-grid-column-item': SharedHeroGridColumnItem;
       'shared.faq-item': SharedFaqItem;
       'shared.faculty-block': SharedFacultyBlock;
+      'shared.cwa-items': SharedCwaItems;
       'shared.courses-block': SharedCoursesBlock;
+      'shared.cards-with-accordion': SharedCardsWithAccordion;
       'shared.card-texts-block': SharedCardTextsBlock;
       'shared.card-text': SharedCardText;
       'shared.banner': SharedBanner;
+      'shared.banner-media-text': SharedBannerMediaText;
       'shared.banner-grid': SharedBannerGrid;
       'shared.accordion': SharedAccordion;
       'shared.about-school': SharedAboutSchool;
