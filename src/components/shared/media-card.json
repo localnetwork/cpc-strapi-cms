@@ -46,6 +46,9 @@
       ],
       "default": "Right",
       "required": true
+    },
+    "Link": {
+      "type": "string"
     }
   }
 }

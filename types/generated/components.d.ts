@@ -414,6 +414,7 @@ export interface SharedMediaCard extends Schema.Component {
     Alignment: Attribute.Enumeration<['Left', 'Right']> &
       Attribute.Required &
       Attribute.DefaultTo<'Right'>;
+    Link: Attribute.String;
   };
 }
 
