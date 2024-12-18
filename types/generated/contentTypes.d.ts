@@ -1103,7 +1103,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'shared.media',
         'shared.cards-with-accordion',
         'shared.banner-media-text',
-        'shared.portrait-media-text'
+        'shared.portrait-media-text',
+        'shared.media-card'
       ]
     > &
       Attribute.Required;

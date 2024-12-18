@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_shared_media_cards",
+  "info": {
+    "displayName": "MediaCard",
+    "icon": "picture",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "Theme": {
+      "type": "enumeration",
+      "enum": [
+        "Off White",
+        "Jet Black",
+        "Black"
+      ],
+      "required": true
+    },
+    "Alignment": {
+      "type": "enumeration",
+      "enum": [
+        "Left",
+        "Right"
+      ],
+      "default": "Right",
+      "required": true
+    }
+  }
+}

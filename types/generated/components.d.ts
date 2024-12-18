@@ -392,6 +392,31 @@ export interface SharedMediaText extends Schema.Component {
   };
 }
 
+export interface SharedMediaCard extends Schema.Component {
+  collectionName: 'components_shared_media_cards';
+  info: {
+    displayName: 'MediaCard';
+    icon: 'picture';
+    description: '';
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    Theme: Attribute.Enumeration<['Off White', 'Jet Black', 'Black']> &
+      Attribute.Required;
+    Alignment: Attribute.Enumeration<['Left', 'Right']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Right'>;
+  };
+}
+
 export interface SharedLandscapeMediaText extends Schema.Component {
   collectionName: 'components_shared_landscape_media_texts';
   info: {
@@ -799,6 +824,7 @@ declare module '@strapi/types' {
       'shared.meta-social': SharedMetaSocial;
       'shared.media': SharedMedia;
       'shared.media-text': SharedMediaText;
+      'shared.media-card': SharedMediaCard;
       'shared.landscape-media-text': SharedLandscapeMediaText;
       'shared.key-people': SharedKeyPeople;
       'shared.interstitial': SharedInterstitial;
